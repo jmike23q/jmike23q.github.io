@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>After you flush</title>
+	<link rel = "stylesheet" href="video_assign.css">
+</head>
+<body>
+<h1>What happens after you flush...</h1><br>
+<h2>Please click the play button at the buttom left to watch the video</h2>
+<div id = "interact" class="absolute"><video width="900" height="600" id = "sampleVideo" controls>
+			<source src="first.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>
+		</div>
+<!--<div id = "video" class = "absolute">
+	<b>The video comes here</b>-->
+<div id = "Question" width = "900" height = "600" class = "absolute">
+    <div class="block">
+     <!--   <span id='close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'></span>--> 
+	<!--<div id = "main" style="position: relative;">-->
+		<!--<img id = "Question" src="" style="z-index: 300000; position: relative;">-->
+		<div id = "Question1" style="text-align: center; z-index: 300000"></div>
+		<div id = "Choice1" style="text-align: center; z-index: 300000"></div>
+		<div id = "Choice2" style="text-align: center; z-index: 300000"></div>
+		<div id = "Choice3" style="text-align: center; z-index: 300000"></div>
+		<div id = "Choice4" style="text-align: center; z-index: 300000"></div>
+		<div id = "Instruction" style="text-align: center; z-index: 300000"></div>
+		<div id="myDiv" style="text-align: center; color: #0000FF"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+		document.getElementById('sampleVideo').addEventListener('ended', myHandler, false);
+		function myHandler(e) {
+			//document.getElementById("Question").src = "image_Question.png"
+			//document.getElementById("Question").style.opacity = "0.6"
+
+			document.getElementById("interact").style.opacity = "0.2";
+			//document.getElementById("sampleVideo").src = "unfolding.mp4";
+			document.getElementById("Question1").innerHTML = "<h2>Please think for a while about the mechanism process after you press the handle and Choose the answer</h2>";
+			document.getElementById("Choice1").innerHTML = "<h3>Choice1: Handle-> Flapper lifts -> Float goes down -> Flapper closes ->  water out -> Fill valve opens -> water refills -> Float goes up -> Fill valve closes</h3><br>";
+			document.getElementById("Choice2").innerHTML = "<h3>Choice2: Handle-> Flapper lifts -> Float goes down -> Flapper closes ->  water out -> Float goes up -> water refills ->Fill valve opens -> Fill valve closes</h3><br>";
+			document.getElementById("Choice3").innerHTML = "<h3>Choice3: Handle-> Flapper lifts -> water out -> Float goes down -> Flapper closes -> Fill valve opens -> water refills -> Float goes up -> Fill valve closes</h3><br>";
+			document.getElementById("Choice4").innerHTML = "<h3>Choice4: Handle-> Flapper lifts -> Float goes down ->  Fill valve opens->  water out -> Flapper closes -> water refills -> Float goes up -> Fill valve closes</h3><br>";
+			document.getElementById("Instruction").innerHTML = "<h3>Select Your Choice</h3><br>";
+			//var btn = document.createElement("BUTTON");
+			//var t = document.createTextNode("CLICK ME");
+			//btn.appendChild(t);
+			//document.body.appendChild(btn);
+
+			var myDiv = document.getElementById("myDiv");
+
+			//Create array of options to be added
+			var array = ["Select","Choice1","Choice2","Choice3","Choice4"];
+
+			//Create and append select list
+			var selectList = document.createElement("select");
+			selectList.setAttribute("id", "mySelect");
+			myDiv.appendChild(selectList);
+
+			//Create and append the options
+			for (var i = 0; i < array.length; i++) {
+		    var option = document.createElement("option");
+		    option.setAttribute("value", array[i]);
+		    option.text = array[i];
+		    selectList.appendChild(option);
+			}
+
+
+			function listR(){
+ 			var e = document.getElementById("mySelect");
+ 			if(e.selectedIndex > 0){
+  			if("Choice3" === e.options[e.selectedIndex].value){
+  				document.getElementById("sampleVideo").src = "third.mp4";
+  				//document.getElementById("mySelect").style.display = "none";
+  				//document.getElementById('sampleVideo').addEventListener('ended', next_video, false);
+  				document.getElementById("Question1").innerHTML = "";
+				document.getElementById("Choice1").innerHTML = "";
+				document.getElementById("Choice2").innerHTML = "";
+				document.getElementById("Choice3").innerHTML = "";
+				document.getElementById("Choice4").innerHTML = "";
+				document.getElementById("Instruction").innerHTML = "";
+				document.getElementById("mySelect").style.display = "none";
+				document.getElementById("interact").style.opacity = "1";
+				document.getElementById("sampleVideo").play();
+				document.getElementById("sampleVideo").removeEventListener('ended', myHandler)
+			}
+  				//window.open("video_assign.html", "_self"); 
+  			//if("Choice3" === e.options[e.selectedIndex].value)
+  			else{
+  				document.getElementById("sampleVideo").src = "second.mp4"; 
+  				document.getElementById("Question1").innerHTML = "";
+				document.getElementById("Choice1").innerHTML = "";
+				document.getElementById("Choice2").innerHTML = "";
+				document.getElementById("Choice3").innerHTML = "";
+				document.getElementById("Choice4").innerHTML = "";
+				document.getElementById("Instruction").innerHTML = "";
+				document.getElementById("mySelect").style.display = "none";
+				document.getElementById("interact").style.opacity = "1";
+				document.getElementById("sampleVideo").play();
+				document.getElementById("sampleVideo").removeEventListener('ended', myHandler)
+			}
+  			}
+ 			}
+			document.getElementById("mySelect").addEventListener("click",listR);
+
+		}
+	</script>		
+</body>
+</html>
+
+
+
